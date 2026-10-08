@@ -9,10 +9,11 @@ import com.sharma.common.BaseDTO;
 @Entity
 @Table(name = "st_role")
 public class RoleDTO extends BaseDTO {
-	@Column(name = "name",length = 50)
+
+	@Column(name = "name", length = 50)
 	private String name;
-	
-	@Column(name = "description",length = 50)
+
+	@Column(name = "description", length = 50)
 	private String description;
 
 	public String getName() {

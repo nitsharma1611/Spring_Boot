@@ -16,6 +16,13 @@ public class UserDTO extends BaseDTO{
 	private String login;
 @Column(name = "password", length = 50)
 	private String password;
+@Column(name = "roleId")
+private Long roleId;
+
+@Column(name = "roleName", length = 50)
+private String roleName;
+
+
 public String getFirstName() {
 	return firstName;
 }
@@ -39,6 +46,18 @@ public String getPassword() {
 }
 public void setPassword(String password) {
 	this.password = password;
+}
+public Long getRoleId() {
+	return roleId;
+}
+public void setRoleId(Long roleId) {
+	this.roleId = roleId;
+}
+public String getRoleName() {
+	return roleName;
+}
+public void setRoleName(String roleName) {
+	this.roleName = roleName;
 }
 	
 }

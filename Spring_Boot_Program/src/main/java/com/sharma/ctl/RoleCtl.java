@@ -1,7 +1,6 @@
 package com.sharma.ctl;
 
-import java.util.HashMap;
-import java.util.Map;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sharma.common.ORSResponse;
 import com.sharma.dto.RoleDTO;
 import com.sharma.form.RoleForm;
 import com.sharma.service.RoleService;
@@ -22,45 +22,45 @@ public class RoleCtl {
 	private RoleService roleservice;
 
 	@PostMapping("/save")
-	public Map save(@RequestBody RoleForm form) {
-		Map m = new HashMap();
+	public ORSResponse save(@RequestBody RoleForm form) {
+		ORSResponse res = new ORSResponse();
 		RoleDTO dto = (RoleDTO) form.getDto();
 		roleservice.add(dto);
-		m.put("msg", "Role add Successfully");
-		return m;
+		res.addMessage( "Role add Successfully");
+		return res;
 	}
 
 	@PostMapping("/update")
-	public Map update(@RequestBody RoleForm form) {
-		Map m = new HashMap();
+	public ORSResponse update(@RequestBody RoleForm form) {
+		ORSResponse res = new ORSResponse();
 		RoleDTO dto = (RoleDTO) form.getDto();
 		roleservice.update(dto);
-		m.put("msg", "Role update Successfully");
-		return m;
+		res.addMessage("Role update Successfully");
+		return res;
 	}
 
 	@PostMapping("/delete/{ids}")
-	public Map delete(@PathVariable long[] ids) {
-		Map m = new HashMap();
+	public ORSResponse delete(@PathVariable long[] ids) {
+		ORSResponse res = new ORSResponse();
 		for (long id : ids) {
 			roleservice.delete(id);
-			m.put("msg", "Role deleted Successfully");
+			res.addMessage( "Role deleted Successfully");
 		}
-		return m;
+		return res;
 	}
 
 	@GetMapping("/get/{id}")
-	public Map get(@PathVariable long id) {
-		Map m = new HashMap();
+	public ORSResponse get(@PathVariable long id) {
+		ORSResponse res = new ORSResponse();
 
 		RoleDTO dto = roleservice.findByPk(id);
 		if (dto != null) {
-			m.put("data", dto);
+			res.addData(dto);
 		} else {
-			m.put("msg", "Record not Found");
+		res.addMessage("Record not Found");
 		}
 
-		return m;
+		return res;
 	}
 
 }
