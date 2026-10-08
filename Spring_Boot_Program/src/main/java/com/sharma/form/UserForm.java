@@ -1,0 +1,71 @@
+package com.sharma.form;
+
+import javax.persistence.Column;
+
+import com.sharma.common.BaseDTO;
+import com.sharma.common.BaseForm;
+import com.sharma.dto.RoleDTO;
+import com.sharma.dto.UserDTO;
+
+public class UserForm extends BaseForm {
+
+	private String firstName;
+	
+		private String lastName;
+	
+		private String login;
+	
+		private String password;
+	              
+	
+	public String getFirstName() {
+			return firstName;
+		}
+
+
+		public void setFirstName(String firstName) {
+			this.firstName = firstName;
+		}
+
+
+		public String getLastName() {
+			return lastName;
+		}
+
+
+		public void setLastName(String lastName) {
+			this.lastName = lastName;
+		}
+
+
+		public String getLogin() {
+			return login;
+		}
+
+
+		public void setLogin(String login) {
+			this.login = login;
+		}
+
+
+		public String getPassword() {
+			return password;
+		}
+
+
+		public void setPassword(String password) {
+			this.password = password;
+		}
+
+
+	@Override
+	public BaseDTO getDto() {
+		UserDTO dto=(UserDTO)initDTO(new UserDTO());
+		dto.setFirstName(firstName);
+		dto.setLastName(lastName);
+		dto.setLogin(login);
+		dto.setPassword(password);
+				return dto;
+	}
+
+}
