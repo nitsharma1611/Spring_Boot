@@ -55,7 +55,7 @@ CREATE TABLE `st_student` (
   `lastName` varchar(50) DEFAULT NULL,
   `mobile` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +64,7 @@ CREATE TABLE `st_student` (
 
 LOCK TABLES `st_student` WRITE;
 /*!40000 ALTER TABLE `st_student` DISABLE KEYS */;
-INSERT INTO `st_student` VALUES (1,'1987-09-10 05:30:00.000000','amit@gmail.com','Amit','Sharma','9876543210');
+INSERT INTO `st_student` VALUES (1,'2000-01-15 00:00:00.000000','rahul@gmail.com','Rahul','Sharma','9876543211'),(2,'2001-03-22 00:00:00.000000','priya@gmail.com','Priya','Verma','9876543212'),(3,'1999-05-10 00:00:00.000000','amit2@gmail.com','Amit','Kumar','9876543213'),(4,'2002-07-18 00:00:00.000000','neha@gmail.com','Neha','Singh','9876543214'),(5,'2000-09-25 00:00:00.000000','rohit@gmail.com','Rohit','Gupta','9876543215'),(6,'2001-11-12 00:00:00.000000','pooja@gmail.com','Pooja','Patel','9876543216'),(7,'1998-02-08 00:00:00.000000','karan@gmail.com','Karan','Mehta','9876543217'),(8,'2002-04-20 00:00:00.000000','sneha@gmail.com','Sneha','Yadav','9876543218'),(9,'1999-06-14 00:00:00.000000','vikas@gmail.com','Vikas','Jain','9876543219'),(10,'2001-08-30 00:00:00.000000','anjali@gmail.com','Anjali','Mishra','9876543220');
 /*!40000 ALTER TABLE `st_student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,4 +106,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-10-11 17:44:58
+-- Dump completed on 2026-10-12 21:29:00

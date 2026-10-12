@@ -58,7 +58,7 @@ public class RoleDAO {
 				predicateList.add(builder.like(qRoot.get("name"), dto.getName() + "%"));
 			}
 			if (dto.getDescription() != null && dto.getDescription().length() > 0) {
-				predicateList.add(builder.like(qRoot.get("description"), dto.getName() + "%"));
+				predicateList.add(builder.like(qRoot.get("description"), dto.getDescription() + "%"));
 			}
 		}
 
