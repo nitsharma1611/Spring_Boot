@@ -1,6 +1,6 @@
 package com.sharma.service;
 
-
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,26 +15,33 @@ import com.sharma.dto.RoleDTO;
 public class RoleService {
 	@Autowired
 	private RoleDAO dao;
-@Transactional(propagation = Propagation.REQUIRED)
+
+	@Transactional(propagation = Propagation.REQUIRED)
 	public long add(RoleDTO dto) {
 		dao.add(dto);
 		return dto.getId();
 	}
-@Transactional(propagation = Propagation.REQUIRED)
+
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void update(RoleDTO dto) {
 		dao.update(dto);
 
 	}
-@Transactional(propagation = Propagation.REQUIRED)
+
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(long id) {
 		dao.delete(id);
 
 	}
-@Transactional(readOnly = true)
-	public RoleDTO findByPk(long id) {
 
+	@Transactional(readOnly = true)
+	public RoleDTO findByPk(long id) {
 		return dao.findByPk(id);
 	}
 
-	
+	@Transactional(readOnly = true)
+	public List<RoleDTO> search(RoleDTO dto, int pageNo, int pageSize) {
+		return dao.search(dto, pageNo, pageSize);
+	}
+
 }

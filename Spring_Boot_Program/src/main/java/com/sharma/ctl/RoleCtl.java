@@ -1,6 +1,6 @@
 package com.sharma.ctl;
 
-
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sharma.common.ORSResponse;
@@ -26,7 +27,7 @@ public class RoleCtl {
 		ORSResponse res = new ORSResponse();
 		RoleDTO dto = (RoleDTO) form.getDto();
 		roleservice.add(dto);
-		res.addMessage( "Role add Successfully");
+		res.addMessage("Role add Successfully");
 		return res;
 	}
 
@@ -44,7 +45,7 @@ public class RoleCtl {
 		ORSResponse res = new ORSResponse();
 		for (long id : ids) {
 			roleservice.delete(id);
-			res.addMessage( "Role deleted Successfully");
+			res.addMessage("Role deleted Successfully");
 		}
 		return res;
 	}
@@ -57,9 +58,26 @@ public class RoleCtl {
 		if (dto != null) {
 			res.addData(dto);
 		} else {
-		res.addMessage("Record not Found");
+			res.addMessage("Record not Found");
 		}
 
+		return res;
+	}
+
+	@RequestMapping(method = { RequestMethod.GET, RequestMethod.POST }, value = "/search/{pageNo}")
+	public ORSResponse search(@RequestBody RoleForm form, @PathVariable int pageNo) {
+		ORSResponse res = new ORSResponse();
+		int pageSize = 5;
+		RoleDTO dto = (RoleDTO) form.getDto();
+
+		List<RoleDTO> list = roleservice.search(dto, pageNo, pageSize);
+
+		if (list != null) {
+			res.addData(list);
+			res.setSuccess(true);
+		} else {
+			res.addMessage("record not found");
+		}
 		return res;
 	}
 

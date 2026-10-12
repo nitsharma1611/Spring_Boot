@@ -17,11 +17,9 @@ public class UserDAO {
 	private EntityManager entityManager;
 
 	public long add(UserDTO dto) {
-Long roleId=dto.getRoleId();
-	
-	RoleDTO roledto=roleDao.findByPk(roleId);
-	String roleName= roledto.getName();
-	dto.setRoleName(roleName);
+
+		RoleDTO roledto = roleDao.findByPk(dto.getRoleId());
+		dto.setRoleName(roledto.getName());
 		entityManager.persist(dto);
 		return dto.getId();
 	}
@@ -42,17 +40,13 @@ Long roleId=dto.getRoleId();
 		UserDTO dto = entityManager.find(UserDTO.class, id);
 		return dto;
 	}
-	
-	
-	
-	/*public UserDTO findByLogin(String login) {
-		 String jpql = "SELECT * FROM st_user  WHERE u.login = :login";
 
-		UserDTO dto = entityManager.find(UserDTO.class, id);
-		return dto;
-	}
-	public UserDTO authenticate(String login,String password) {
-		UserDTO dto = entityManager.;
-		return dto;
-	}*/
+	/*
+	 * public UserDTO findByLogin(String login) { String jpql =
+	 * "SELECT * FROM st_user  WHERE u.login = :login";
+	 * 
+	 * UserDTO dto = entityManager.find(UserDTO.class, id); return dto; } public
+	 * UserDTO authenticate(String login,String password) { UserDTO dto =
+	 * entityManager.; return dto; }
+	 */
 }
