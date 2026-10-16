@@ -29,6 +29,17 @@ public class UserService {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
+	public void save(UserDTO dto) {
+		Long id = dto.getId();
+		if (id != null && id > 0) {
+			dao.update(dto);
+		} else {
+			id = add(dto);
+		}
+
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(long id) {
 		dao.delete(id);
 
@@ -46,4 +57,17 @@ public class UserService {
 		return dao.search(dto, pageNo, pageSize);
 
 	}
+
+	public UserDTO authenticate(String login, String password) {
+		UserDTO dto = dao.findByUniqueKey("login", login);
+
+		if (dto != null) {
+			if (dto.getPassword().equals(password)) {
+				return dto;
+			}
+		}
+		return null;
+
+	}
+
 }

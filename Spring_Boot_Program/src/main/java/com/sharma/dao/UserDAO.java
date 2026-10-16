@@ -86,4 +86,28 @@ public class UserDAO {
 		List<UserDTO> list = tq.getResultList();
 		return list;
 	}
+
+	public UserDTO findByUniqueKey(String attribute, String value) {
+
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+
+		CriteriaQuery<UserDTO> cq = builder.createQuery(UserDTO.class);
+
+		Root<UserDTO> qRoot = cq.from(UserDTO.class);
+
+		Predicate condition = builder.equal(qRoot.get(attribute), value);
+
+		cq.where(condition);
+
+		TypedQuery<UserDTO> tq = entityManager.createQuery(cq);
+
+		List<UserDTO> list = tq.getResultList();
+
+		UserDTO dto = null;
+
+		if (list.size() == 1) {
+			dto = list.get(0);
+		}
+		return dto;
+	}
 }
